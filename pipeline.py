@@ -113,7 +113,7 @@ def model_req(payload=None):    #Issue request to the Model Server
 
 if __name__ == "__main__":
     # from pipeline import create_payload, model_req
-    MESSAGE = ""
+    MESSAGE = "hello"
     PROMPT = MESSAGE 
     payload = create_payload(
                          target="ollama",
