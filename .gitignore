@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 _config
-
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

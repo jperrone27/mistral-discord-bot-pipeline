@@ -1,4 +1,3 @@
-
 from dotenv import dotenv_values
 from owlmind.pipeline import ModelProvider
 from owlmind.simple import SimpleEngine
