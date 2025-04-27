@@ -5,18 +5,10 @@ import time
 
 def load_config():
 
-    # config_locations = [
-    #     "./config",
-    #     "../config"
-    # ]
-    
-    # Find CONFIG
-    config_path = "_config"
-    # for location in config_locations:
-    #     if os.path.exists(location):
-    #         config_path = location
-    #         break
-    
+    current_path = os.path.abspath(__file__)
+    current_dir = os.path.dirname(current_path)
+    config_path = current_dir + "/config/_config"
+
     if not config_path:
         raise FileNotFoundError("Configuration file not found in any of the expected locations.")
     
