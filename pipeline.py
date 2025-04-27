@@ -4,17 +4,14 @@ import os
 import time
 
 def load_config():
-    """
-    Load config file looking into multiple locations
-    """
+
     # config_locations = [
-    #     "./_config",
-    #     "prompt-eng/_config",
-    #     "../_config"
+    #     "./config",
+    #     "../config"
     # ]
     
     # Find CONFIG
-    config_path = "./config/_config"
+    config_path = "_config"
     # for location in config_locations:
     #     if os.path.exists(location):
     #         config_path = location
@@ -113,15 +110,17 @@ def model_req(payload=None):    #Issue request to the Model Server
 
 if __name__ == "__main__":
     # from pipeline import create_payload, model_req
-    MESSAGE = "hello"
+    MESSAGE = input("enter a message: ")
+    print(MESSAGE, "\n")
     PROMPT = MESSAGE 
+    
     payload = create_payload(
                          target="ollama",
-                         model="llama3.2:latest", 
+                         model="mistral", 
                          prompt=PROMPT, 
-                         temperature=1.0, 
-                         num_ctx=5555555, 
-                         num_predict=1)
+                         temperature= 0.1, 
+                         num_ctx= 2048,  
+                         num_predict= 200)
 
     time, response = model_req(payload=payload)
     print(response)
