@@ -7,18 +7,18 @@ def load_config():
     """
     Load config file looking into multiple locations
     """
-    config_locations = [
-        "./_config",
-        "prompt-eng/_config",
-        "../_config"
-    ]
+    # config_locations = [
+    #     "./_config",
+    #     "prompt-eng/_config",
+    #     "../_config"
+    # ]
     
     # Find CONFIG
-    config_path = None
-    for location in config_locations:
-        if os.path.exists(location):
-            config_path = location
-            break
+    config_path = "./config/_config"
+    # for location in config_locations:
+    #     if os.path.exists(location):
+    #         config_path = location
+    #         break
     
     if not config_path:
         raise FileNotFoundError("Configuration file not found in any of the expected locations.")
@@ -33,15 +33,6 @@ def load_config():
 
 
 def create_payload(model, prompt, target="ollama", **kwargs):
-    """
-    Create the Request Payload in the format required byt the Model Server
-    @NOTE: 
-    Need to adjust here to support multiple target formats
-    target can be only ('ollama' or 'open-webui')
-
-    @TODO it should be able to self_discover the target Model Server
-    [Issue 1](https://github.com/genilab-fau/prompt-eng/issues/1)
-    """
 
     payload = None
     if target == "ollama":
@@ -54,29 +45,19 @@ def create_payload(model, prompt, target="ollama", **kwargs):
             payload["options"] = {key: value for key, value in kwargs.items()}
 
     elif target == "open-webui":
-        '''
-        @TODO need to verify the format for 'parameters' for 'open-webui' is correct.
-        [Issue 2](https://github.com/genilab-fau/prompt-eng/issues/2)
-        '''
+
         payload = {
             "model": model,
             "messages": [ {"role" : "user", "content": prompt } ]
         }
 
-        # @NOTE: Taking not of the syntaxes we tested before; none seems to work so far 
-        #payload.update({key: value for key, value in kwargs.items()})
-        #if kwargs:
-        #   payload["options"] = {key: value for key, value in kwargs.items()}
         
     else:
         print(f'!!ERROR!! Unknown target: {target}')
     return payload
 
 
-def model_req(payload=None):
-    """
-    Issue request to the Model Server
-    """
+def model_req(payload=None):    #Issue request to the Model Server
         
     # CUT-SHORT Condition
     try:
@@ -128,16 +109,14 @@ def model_req(payload=None):
     return
 
 
-###
-### DEBUG
-###
+
 
 if __name__ == "__main__":
-    from _pipeline import create_payload, model_req
-    MESSAGE = "1 + 1"
+    # from pipeline import create_payload, model_req
+    MESSAGE = ""
     PROMPT = MESSAGE 
     payload = create_payload(
-                         target="open-webui",   
+                         target="ollama",
                          model="llama3.2:latest", 
                          prompt=PROMPT, 
                          temperature=1.0, 
