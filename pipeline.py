@@ -40,7 +40,6 @@ def create_payload(model, prompt, target="ollama", **kwargs):
             "messages": [ {"role" : "user", "content": prompt } ]
         }
 
-        
     else:
         print(f'!!ERROR!! Unknown target: {target}')
     return payload
@@ -96,8 +95,6 @@ def model_req(payload=None):    #Issue request to the Model Server
     else:
         return -1, f"!!ERROR!! HTTP Response={response.status_code}, {response.text}"
     return
-
-
 
 
 if __name__ == "__main__":
