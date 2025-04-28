@@ -98,7 +98,7 @@ class SimpleEngine(BotEngine):
                 self.load(file_name=self.rule_file)
             context.response += f'### Reloaded with {len(self.plans)} plans!'
 
-        elif True:
+        elif context in self.plans:
             if self.debug: print(f'SimpleEngine: response={context.result}, alternatives={len(context.alternatives)}, score={context.score}')
             if self.is_action(context.result):
                 command, prompt = context.result.split('/', maxsplit=1) if '/' in context.result else (context.result, '')
