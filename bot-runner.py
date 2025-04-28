@@ -13,9 +13,9 @@ if __name__ == '__main__':
     TYPE = config['SERVER_TYPE'] if 'SERVER_TYPE' in config else None
     API_KEY = config['SERVER_API_KEY'] if 'SERVER_API_KEY' in config else None
 
-    # Configure a ModelProvider if there is an URL
+    # Configure a ModelProvider if there is a URL
     provider = ModelProvider(type=TYPE,  base_url=URL, api_key=API_KEY, model=MODEL) if URL else None
-
+    print(ModelProvider.models)
     # Load Simples Bot Brain loading rules from a CSV
     engine = SimpleEngine(id='bot-1')
     engine.model_provider = provider

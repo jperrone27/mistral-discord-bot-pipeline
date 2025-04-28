@@ -151,21 +151,21 @@ class ModelProvider():
         return self.result 
 
 
-##
-## DEBUG
-## TO BE DELETED
+# ##
+# ## DEBUG
+# ## TO BE DELETED
 
-if __name__ == '__main__':
-    from dotenv import dotenv_values
+# if __name__ == '__main__':
+#     from dotenv import dotenv_values
 
-    # load token from .env
-    config = dotenv_values('.env')
-    URL = config['SERVER_URL']
-    MODEL = config['SERVER_MODEL'] if 'SERVER_MODEL' in config else None
-    TYPE = config['SERVER_TYPE'] if 'SERVER_TYPE' in config else None
-    API_KEY = config['SERVER_API_KEY'] if 'SERVER_API_KEY' in config else None
+#     # load token from .env
+#     config = dotenv_values('.env')
+#     URL = config['SERVER_URL']
+#     MODEL = config['SERVER_MODEL'] if 'SERVER_MODEL' in config else None
+#     TYPE = config['SERVER_TYPE'] if 'SERVER_TYPE' in config else None
+#     API_KEY = config['SERVER_API_KEY'] if 'SERVER_API_KEY' in config else None
 
-    # Configure a ModelProvider if there is an URL
-    provider = ModelProvider(type=TYPE,  base_url=URL, api_key=API_KEY, model=MODEL) if URL else None
-    print(provider.request(prompt="1+1"))
+#     # Configure a ModelProvider if there is an URL
+#     provider = ModelProvider(type=TYPE,  base_url=URL, api_key=API_KEY, model=MODEL) if URL else None
+#     print(provider.request(prompt="1+1"))
 
