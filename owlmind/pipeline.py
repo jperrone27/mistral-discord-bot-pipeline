@@ -71,7 +71,7 @@ class OpenWebUIRequest(ModelRequestMaker):
 ### 
 
 class ModelProvider():
-    def __init__(self, base_url, type=None, api_key=None, model=None):
+    def __init__(self, base_url, type=None, api_key=None, model=None, temperature= 0.1, num_ctx=10, num_predict=10):
         self.base_url = base_url
         self.api_key = api_key
         self.type = None
@@ -79,7 +79,9 @@ class ModelProvider():
         self.req_maker = None
         self.delta = -1
         self.response = None
-
+        self.temperature = temperature
+        self.num_ctx = num_ctx
+        self.num_predict = num_predict       
 
         if type == 'ollama':
             self.req_maker = OllamaRequest()
@@ -125,7 +127,7 @@ class ModelProvider():
 
         ## (1) Creates the payload through the ModelRequestMaker
         url = self.req_maker.url_chat(self.base_url)
-        payload = self.req_maker.package(model=self.model, prompt=prompt, **kwargs)
+        payload = self.req_maker.package(model=self.model, prompt=prompt, temperature=self.temperature, num_ctx=self.num_ctx, num_predict=self.num_predict,  **kwargs)
         payload = json.dumps(payload) if payload else None
 
         print('P->', url, payload)
