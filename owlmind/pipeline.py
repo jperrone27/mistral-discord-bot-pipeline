@@ -12,7 +12,7 @@ class ModelRequestMaker():
     def url_chat(self, url):
         raise(f'!!ERROR!! url_chat() must be overload')
     
-    def package(self, prompt, model, **kwargs):
+    def package(self, prompt, model, temperature, num_ctx, num_predict,**kwargs):
         raise(f'!!ERROR!! package() must be overload')
 
     def unpackage(self, response):
@@ -23,13 +23,20 @@ class OllamaRequest(ModelRequestMaker):
     def url_chat(self, url):
         return urljoin(url, '/api/generate')
     
-    def package(self, model, prompt, **kwargs):
+    def package(self, model, prompt, temperature, num_ctx, num_predict, **kwargs):
         payload = {
             "model": model, 
             "prompt": prompt, 
             "stream": False,
         }
 
+        if temperature is not None:
+            payload["temperature"] = temperature
+        if num_ctx is not None:
+            payload["num_ctx"] = num_ctx
+        if num_predict is not None:
+            payload["num_predict"] = num_predict
+            
         # Load kwargs into payload.options
         if kwargs:
             payload["options"] = {key: value for key, value in kwargs.items()}
