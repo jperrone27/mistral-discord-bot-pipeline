@@ -1,8 +1,6 @@
 ##
 ## Rules for SimpleEngine
 #
-# Experimental rules for GenAI Pipeline
-#
 message,response
 *hello*, Hi there!
 *your name*, My name is $bot
@@ -11,4 +9,4 @@ message,response
 *date*, Today is $date
 *time*, Now it is $time
 What is *, @prompt/Just provide the result
-*, @prompt/Act like you are a personal assistant. Process this message
+*, @prompt/Act like you are a personal assistant. Process this messageS

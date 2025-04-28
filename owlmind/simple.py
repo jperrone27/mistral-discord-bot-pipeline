@@ -88,8 +88,6 @@ class SimpleEngine(BotEngine):
             plan_str : str = str(self.plans)
             context.response += "```\n" + plan_str[0:1500] + "\n```"
 
-
-
         elif context['message'] == '/reload':
             context.response = f'### Version: {BotMessage.VERSION}\n'
             self.plans.clear()
