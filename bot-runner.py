@@ -22,5 +22,5 @@ if __name__ == '__main__':
     engine.load("bot-rules.csv")
 
     # Kick start the Bot Runner process
-    bot = DiscordBot(token=TOKEN, engine=engine, debug=True)
+    bot = DiscordBot(token=TOKEN, engine=engine, debug=True, heartbeat = 180)
     bot.run()

@@ -17,11 +17,12 @@ class DiscordBot(discord.Client):
     bot = DiscordBot(token=TOKEN, engine=MyBotMind, debug=True)
     bot.run()
     """
-    def __init__(self, token, engine:BotEngine, promiscuous:bool=False, debug:bool=False):
+    def __init__(self, token, engine:BotEngine, promiscuous:bool=False, debug:bool=False, heartbeat:int = 120):
         self.token = token
         self.promiscuous = promiscuous
         self.debug = debug
         self.engine = engine
+        self.heartbeat_timetout = heartbeat
         if self.engine: self.engine.debug = debug
 
         ## Discord attributes
