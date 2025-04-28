@@ -51,4 +51,4 @@ ME 5961 - Master's Thesis (If you plan on pursuing a master's degree)
 Please note that this list is not exhaustive, and the specific courses may vary depending on your area of specialization within mechanical engineering. It's also essential to consult with an academic advisor to ensure that you meet all requirements for your desired program and career path. Good luck in your studies!
 
 
-![example](./images/)
+![example](./images/examples.png)
